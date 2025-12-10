@@ -23,6 +23,7 @@
             margin: 0;
             padding: 20px;
             text-align: center;
+            /* 背景點點裝飾 */
             background-image: radial-gradient(#ffe4e1 15%, transparent 16%), radial-gradient(#fffacd 15%, transparent 16%);
             background-size: 60px 60px;
             background-position: 0 0, 30px 30px;
@@ -46,13 +47,12 @@
 
         /* 圖片容器 */
         .banner-container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto 30px auto;
             border-radius: 20px;
             overflow: hidden;
             border: var(--card-border);
             background-color: white;
-            /* 讓圖片容器稍微寬一點以配合下面的寬度 */
         }
 
         .banner-container img {
@@ -61,20 +61,15 @@
             display: block;
         }
 
-        /* --- 重點修改：強制一行排版 --- */
+        /* --- 修正：改回垂直流動排版 --- */
         .cards-container {
             display: flex;
-            flex-wrap: nowrap; /* 禁止換行 */
-            justify-content: center; /* 如果螢幕夠寬則置中 */
-            gap: 15px;
-            width: 100%;
-            max-width: 1200px; /* 限制最大寬度 */
+            flex-wrap: wrap; /* 關鍵：允許換行，手機上就會變直排 */
+            justify-content: center; /* 置中對齊 */
+            gap: 25px; /* 卡片之間的距離 */
+            max-width: 1000px;
             margin: 0 auto;
-            
-            /* 手機版優化：如果螢幕太窄，允許左右滑動，而不是擠在一起 */
-            overflow-x: auto; 
-            padding-bottom: 20px; /* 預留滾動條空間 */
-            -webkit-overflow-scrolling: touch; /* 讓手機滑動更順暢 */
+            padding-bottom: 40px;
         }
 
         /* 卡片設計 */
@@ -84,16 +79,14 @@
             border-radius: 25px;
             padding: 20px;
             
-            /* 固定寬度設定，確保三個並排時不會變形 */
-            flex: 0 0 320px; 
-            min-width: 300px; 
+            /* 讓卡片在手機上佔滿寬度，但在電腦上保持固定大小 */
+            width: 100%; 
+            max-width: 320px; 
             
             box-shadow: 5px 5px 0px rgba(93, 64, 55, 0.2);
             transition: transform 0.2s;
             position: relative;
             overflow: hidden;
-            
-            /* 讓內容垂直排列整齊 */
             display: flex;
             flex-direction: column;
         }
@@ -119,7 +112,7 @@
             margin: 5px 0 10px 0;
             border-bottom: 2px dashed var(--text-color);
             padding-bottom: 10px;
-            height: 3rem; /* 固定高度讓排版對齊 */
+            min-height: 2.5rem; /* 保持標題高度一致 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -127,7 +120,7 @@
 
         .info-row {
             margin: 6px 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
@@ -148,22 +141,22 @@
             font-size: 1.2rem;
             font-weight: bold;
             color: #d65a31;
-            margin-top: auto; /* 將價錢往下推 */
-            padding-top: 10px;
+            margin-top: 5px;
+            padding-top: 5px;
         }
 
         /* 按鈕群組 */
         .btn-group {
-            margin-top: 15px;
+            margin-top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn {
             display: block;
             text-decoration: none;
-            padding: 10px;
+            padding: 12px;
             border-radius: 12px;
             font-weight: bold;
             border: 2px solid var(--text-color);
@@ -173,7 +166,7 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .btn-openrice { background-color: #ffcb4f; }
@@ -193,7 +186,7 @@
 <body>
 
     <h1>12月30日 食咩好？</h1>
-    <div class="subtitle">✨ 快啲揀我要book枱 ✨</div>
+    <div class="subtitle">✨ 快啲揀我要book枱 thx ✨</div>
 
     <div class="banner-container">
         <img src="chiikawa_banner.png" alt="圖片載入中..." onerror="this.style.display='none'; this.parentElement.innerHTML='<h3 style=\'padding:20px\'>記得把圖片命名為 chiikawa_banner.png 喔！</h3>'">
@@ -207,7 +200,7 @@
             
             <div class="info-row">
                 📍 
-                <a href="https://www.google.com/maps/search/?api=1&query=SeoulSoul+Kennedy+Town" target="_blank" class="map-link">
+                <a href="https://maps.app.goo.gl/3Qy4v5z7x8w9A1B2C" target="_blank" class="map-link">
                     西環堅尼地城
                 </a>
                 <br>
@@ -233,11 +226,11 @@
             
             <div class="info-row">
                 📍 
-                <a href="https://www.google.com/maps/search/?api=1&query=Yum+Hotpot+Mong+Kok" target="_blank" class="map-link">
+                <a href="https://maps.app.goo.gl/D1E2F3G4H5I6J7K8" target="_blank" class="map-link">
                     旺角
                 </a> 
                 / 
-                <a href="https://www.google.com/maps/search/?api=1&query=Yum+Hotpot+Tsim+Sha+Tsui" target="_blank" class="map-link">
+                <a href="https://maps.app.goo.gl/L9M0N1O2P3Q4R5S6" target="_blank" class="map-link">
                     尖沙咀
                 </a>
                 <br>
@@ -266,11 +259,11 @@
             
             <div class="info-row">
                 📍 
-                <a href="https://www.google.com/maps/search/?api=1&query=Hotpot+King+Mong+Kok" target="_blank" class="map-link">
+                <a href="https://maps.app.goo.gl/T7U8V9W0X1Y2Z3A4" target="_blank" class="map-link">
                     旺角
                 </a> 
                 / 
-                <a href="https://www.google.com/maps/search/?api=1&query=Hotpot+King+Jordan" target="_blank" class="map-link">
+                <a href="https://maps.app.goo.gl/B5C6D7E8F9G0H1I2" target="_blank" class="map-link">
                     佐敦
                 </a>
                 <br>
@@ -295,5 +288,6 @@
 
     </div>
 
+   
 </body>
 </html>
